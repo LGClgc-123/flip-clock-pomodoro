@@ -1,3 +1,6 @@
+// 全局定义Kotlin版本，解决1.4版本过低编译报错
+val kotlinVersion = "1.9.0"
+
 allprojects {
     repositories {
         google()
