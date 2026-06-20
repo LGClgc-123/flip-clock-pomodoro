@@ -10,7 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
-  shared_preferences: ^2.3.4
+  # 降级至兼容 Dart3.3.0 的稳定版本
+  shared_preferences: ^2.2.3
   flutter_local_notifications: ^18.0.1
   audioplayers: ^6.1.0
   provider: ^6.1.2
@@ -18,7 +19,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  # 降级到兼容 Dart3.2.0 的版本
   flutter_lints: ^2.0.0
 
 flutter:
