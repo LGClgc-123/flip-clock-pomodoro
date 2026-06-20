@@ -2,9 +2,8 @@ name: Flutter自动打包APK
 on:
   push:
     branches: [ main ]
-  workflow_dispatch: # 支持手动一键启动打包
+  workflow_dispatch:
 
-# 全局环境变量，全局生效国内镜像，无需执行错误的config命令
 env:
   PUB_HOSTED_URL: https://pub.flutter-io.cn
   FLUTTER_STORAGE_BASE_URL: https://storage.flutter-io.cn
@@ -25,7 +24,7 @@ jobs:
       - name: 安装稳定版Flutter SDK
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.10.0'
+          flutter-version: '3.19.0' # 已升级，Dart版本 >=3.12.2
 
       - name: 检查Flutter环境完整性
         run: flutter doctor
@@ -41,5 +40,4 @@ jobs:
         with:
           name: 番茄时钟_成品APK
           path: build/app/outputs/apk/release/app-release.apk
-
 
