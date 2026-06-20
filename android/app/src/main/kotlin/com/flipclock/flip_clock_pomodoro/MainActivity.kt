@@ -1,5 +1,5 @@
-package com.flipclock.flip_clock_pomodoro
+package com.example.flip_clock_pomodoro
 
 import io.flutter.embedding.android.FlutterActivity
 
-class MainActivity : FlutterActivity()
+class MainActivity: FlutterActivity()
