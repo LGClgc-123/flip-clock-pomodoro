@@ -1,0 +1,29 @@
+name: Flutter自动打包APK
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取项目源码
+        uses: actions/checkout@v4
+
+      - name: 配置Flutter环境
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.22.0'
+
+      - name: 安装项目依赖
+        run: flutter pub get
+
+      - name: 编译正式版APK
+        run: flutter build apk --release --split-per-abi
+
+      - name: 留存打包好的APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: 番茄时钟_APK安装包
+          path: build/app/outputs/apk/release/
+
