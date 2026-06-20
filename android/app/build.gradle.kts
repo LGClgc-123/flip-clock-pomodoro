@@ -4,7 +4,7 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
-val kotlinVersion: String by rootProject.extra
+val kotlinVersion = "1.9.0"
 
 android {
     namespace = "com.example.flip_clock_pomodoro"
@@ -18,6 +18,7 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+        languageVersion = "1.8" // 强制锁定编译语言版本为1.8，彻底解决报错
     }
 
     defaultConfig {
