@@ -1,50 +1,38 @@
-name: Flutter打包APK
+name: Build Flutter APK
 on:
   push:
     branches: [ main ]
-  workflow_dispatch: # 支持手动一键打包
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: 拉取项目代码
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      # 配置安卓编译完整环境：JDK + Android SDK
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v0
-
-      - name: Setup Java 17
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      # 切换国内镜像，解决依赖下载超时
-      - name: 配置国内Flutter镜像源
-        run: |
-          export PUB_HOSTED_URL=https://pub.flutter-io.cn
-          export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
-
-      - name: 安装 Flutter SDK
+      - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.13.0'
-          cache: true
+          flutter-version: '3.10.6'
 
-      - name: 查看Flutter环境是否正常
-        run: flutter doctor
+      - name: Configure Pub 国内镜像
+        run: flutter pub config set --global registry https://pub.flutter-io.cn
 
-      - name: 下载项目全部依赖
+      - name: Install dependencies
         run: flutter pub get
 
-      - name: 编译 Release 正式安装包
+      - name: Build Release APK
         run: flutter build apk --release
 
-      - name: 打包文件存档下载
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: 番茄时钟_APK成品包
-          path: build/app/outputs/apk/release/app-release.apk
+          name: 番茄时钟APK
+          path: build/app/outputs/apk/release/
 
