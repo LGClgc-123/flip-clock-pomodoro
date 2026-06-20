@@ -11,10 +11,11 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.6
   shared_preferences: ^2.2.3
-  # 降级音频插件，规避Embedding V2强制升级要求
-  audioplayers: ^5.2.1
   provider: ^6.0.5
-  # 暂时移除通知插件，先保证打包成功，后续你可以单独适配
+
+  # 暂时移除音频播放插件，规避安卓嵌入架构版本报错
+  # audioplayers: ^5.2.1
+  # 暂时移除本地通知插件，后续打包成功后再按需添加
   # flutter_local_notifications: ^18.0.1
 
 dev_dependencies:
