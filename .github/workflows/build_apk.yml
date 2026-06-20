@@ -33,12 +33,10 @@ jobs:
         run: flutter pub get
 
       - name: 编译正式Release APK安装包
-        # 新增参数直接跳过安卓V1/V2嵌入架构强制检测，规避之前所有架构报错
-        run: flutter build apk --release --skip-android-embedding-check
+        run: flutter build apk --release
 
       - name: 上传打包成品APK
         uses: actions/upload-artifact@v4
         with:
           name: 番茄时钟_成品APK
           path: build/app/outputs/apk/release/app-release.apk
-
