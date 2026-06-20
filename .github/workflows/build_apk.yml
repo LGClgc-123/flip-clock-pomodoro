@@ -21,10 +21,10 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: 安装稳定版Flutter SDK
+      - name: 安装Flutter 3.19.0（Dart 3.3.0，满足依赖需求）
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.16.0'
+          flutter-version: '3.19.0'
 
       - name: 检查Flutter环境完整性
         run: flutter doctor
