@@ -9,12 +9,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.8
-  # 降级至兼容 Dart3.3.0 的稳定版本
+  cupertino_icons: ^1.0.6
   shared_preferences: ^2.2.3
-  flutter_local_notifications: ^18.0.1
-  audioplayers: ^6.1.0
-  provider: ^6.1.2
+  # 降级音频插件，规避Embedding V2强制升级要求
+  audioplayers: ^5.2.1
+  provider: ^6.0.5
+  # 暂时移除通知插件，先保证打包成功，后续你可以单独适配
+  # flutter_local_notifications: ^18.0.1
 
 dev_dependencies:
   flutter_test:
